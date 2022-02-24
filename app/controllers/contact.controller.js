@@ -76,7 +76,7 @@ exports.findOne = async(req, res, next) => {
   const [error, document] = await handlePromise(Contact.findOne(condition));
   
   if (error) {
-    return next(new BadRequestError(500, 'Error retrieving contact with id=${req.params.id)');
+    return next(new BadRequestError(500, 'Error retrieving contact with id=${req.params.id)'))
   }
 
   if(!document) {
@@ -92,15 +92,15 @@ exports.update = async (req, res, next) => {
     return next(new BadRequestError(400, "Data to update can not be empty"));
   }
 
-  cont condition = {
+  const condition = {
     _id: req.params.id,
   };
 
   const [error, document] = await handlePromise(
     Contact.findOneandUpdate(condition, req.body,{
-      new: true.
+      new: true,
     })
-};
+  );
 
 if(error) {
   return next(new BadRequestError(500, 'Error updating contact with id=${req.params.id}'));
@@ -110,6 +110,7 @@ if(!document) {
   return next(new BadRequestError(404, "Contact not found"));
 }
 
+};
 
 // Delete a contact with the specified id in the request
 
@@ -133,10 +134,10 @@ exports.delete = async(req, res, next) => {
 }
 
 // Fill all favorite constact of a user
-exports.findAllFoverit = async (req, res, next) => {
+exports.findAllFavorite = async (req, res, next) => {
   const [erroo, document] = await handlePromise(
     Contact.find({favorite:true})
-  }; 
+  ); 
 
   if(error) {
     return next(new BadRequestError(500, 'An error occured while retrieving favorite contact'));
@@ -146,9 +147,9 @@ exports.findAllFoverit = async (req, res, next) => {
 }
 
 // Delete all contacts of a user from the database
-exports,deleteAll = async(req, res, next) => {
+exports.deleteAll = async(req, res, next) => {
   const [error, data] = await handlePromise(
-    Contact.deleteMany({})
+    Contact.deleteMany({ })
   );
 
   if (error) {
