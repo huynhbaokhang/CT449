@@ -1,7 +1,7 @@
 const express = require("express");
 const contact = require("../controllers/contact.controller");
 
-module.exports = (app) => {
+module.exports = app => {
   const router = express.Router();
 
   //Create a new contact
@@ -17,10 +17,13 @@ module.exports = (app) => {
   router.get("/:id", contact.findOne);
 
   //Update a contact with id
-  router.put("/:id", contact.update);
+  router.put("/:id", contact.Update);
 
   //Delete a contact with id
   router.delete("/:id", contact.delete);
+
+  //Delete all contacts
+  router.delete("/:id", contact.deleteAll);
 
   app.use("/api/contacts", router);
 };

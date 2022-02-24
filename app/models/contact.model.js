@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { on } = require("nodemon");
 
-const schema = mongoose.schema(
+const schema = mongoose.Schema(
     {
         name: {
             type: String,
@@ -26,4 +26,4 @@ schema.method("toJSON", function() {
     return object;
 });
 
-module.exports = mongoose.model("contact", schema0);
+module.exports = mongoose.model("contact", schema);
