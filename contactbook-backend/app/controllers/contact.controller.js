@@ -146,7 +146,7 @@ exports.delete = async(req, res, next) => {
 
 // Fill all favorite constact of a user
 exports.findAllFavorite = async (req, res, next) => {
-  const [erroo, documents] = await handlePromise(
+  const [error, documents] = await handlePromise(
     Contact.find({favorite: true})
   ); 
 
